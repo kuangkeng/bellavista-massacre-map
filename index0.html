@@ -134,7 +134,6 @@ body {
   color: #fff;
   margin-top: 0px;
 }
-
 .scroll-text .title {
   color: #fff;
   text-align: center;
@@ -306,7 +305,7 @@ dimIcon = L.divIcon({
 });
 
 const 
-  flyTime = 1,
+  flyTime = 2,
   t1coor = defaultCoor,
   t2coor = [-0.394306,-74.568731],
   t4coor = [-0.39489,-74.568763],
@@ -316,18 +315,6 @@ const
   t11coor = [-0.392003,-74.569566],
   t12coor = [-0.390407,-74.569401],
   endcoor = [-0.392826,-74.569889],
-  point2_4 = [t2coor,t4coor],
-  point4_7 = [t4coor,t7coor],
-  point7_8 = [t7coor,t8coor],
-  point8_9 = [t8coor,t9coor],
-  point9_11 = [t9coor,t11coor],
-  point11_12 = [t11coor,t12coor],
-  line2_4 = L.polyline(point2_4, {color: '#CC0000', weight: 1, opacity:0}).addTo(mymap),
-  line4_7 = L.polyline(point4_7, {color: '#CC0000', weight: 1, opacity:0}).addTo(mymap),
-  line7_8 = L.polyline(point7_8, {color: '#CC0000', weight: 1, opacity:0}).addTo(mymap),
-  line8_9 = L.polyline(point8_9, {color: '#CC0000', weight: 1, opacity:0}).addTo(mymap),
-  line9_11 = L.polyline(point9_11, {color: '#CC0000', weight: 1, opacity:0}).addTo(mymap),
-  line11_12 = L.polyline(point11_12, {color: '#CC0000', weight: 1, opacity:0}).addTo(mymap),
   redt2Marker = L.marker(t2coor, {
     icon: redIcon,
   }).bindTooltip('', {
@@ -419,8 +406,6 @@ new Waypoint({
       redt2Marker.setIcon(dimIcon);
       redt2Marker.closeTooltip();
       // redt2Marker.remove();
-      // line2_4.addTo(mymap);
-      line2_4.setStyle({opacity: 1});
       $('.imagebox').fadeOut(300); 
     } else {
       mymap.flyTo(t2coor, incidentZoom, {
@@ -430,8 +415,6 @@ new Waypoint({
       redt2Marker.openTooltip();
       // redt2Marker.addTo(mymap);
       redt4Marker.remove();
-      // line2_4.remove();
-      line2_4.setStyle({opacity: 0});
       $('.imagebox').fadeIn(300); 
     }
   },
@@ -477,8 +460,6 @@ new Waypoint({
       redt4Marker.setIcon(dimIcon);
       redt4Marker.closeTooltip();
       // redt4Marker.remove();
-      // line4_7.addTo(mymap);
-      line4_7.setStyle({opacity: 1});
       $('.imagebox').fadeOut(300); 
     } else {
       mymap.flyTo(t4coor, incidentZoom, {
@@ -488,8 +469,6 @@ new Waypoint({
       redt4Marker.openTooltip();
       // redt4Marker.addTo(mymap);
       redt7Marker.remove();
-      // line4_7.remove();
-      line4_7.setStyle({opacity: 0});
       $('.imagebox').fadeIn(300); 
     }
   },
@@ -507,8 +486,6 @@ new Waypoint({
       redt7Marker.setIcon(dimIcon);
       redt7Marker.closeTooltip();
       // redt7Marker.remove();
-      // line7_8.addTo(mymap);
-      line7_8.setStyle({opacity: 1});
     } else {
       mymap.flyTo(t7coor, incidentZoom, {
       duration: flyTime
@@ -517,8 +494,6 @@ new Waypoint({
       redt7Marker.openTooltip();
       // redt7Marker.addTo(mymap);
       redt8Marker.remove();
-      // line7_8.remove();
-      line7_8.setStyle({opacity: 0});
     }
   },
   offset: offsetVal,
@@ -535,8 +510,6 @@ new Waypoint({
       redt8Marker.setIcon(dimIcon);
       redt8Marker.closeTooltip();
       // redt8Marker.remove();
-      // line8_9.addTo(mymap);
-      line8_9.setStyle({opacity: 1});
     } else {
       mymap.flyTo(t8coor, incidentZoom, {
       duration: flyTime
@@ -545,8 +518,6 @@ new Waypoint({
       redt8Marker.openTooltip();
       // redt8Marker.addTo(mymap);
       redt9Marker.remove();
-      // line8_9.remove();
-      line8_9.setStyle({opacity: 0});
     }
   },
   offset: offsetVal,
@@ -578,8 +549,6 @@ new Waypoint({
       redt9Marker.setIcon(dimIcon);
       redt9Marker.closeTooltip();
       // redt9Marker.remove();
-      // line9_11.addTo(mymap);
-      line9_11.setStyle({opacity: 1});
       $('.imagebox').fadeOut(300); 
     } else {
       mymap.flyTo(t9coor, incidentZoom, {
@@ -589,8 +558,6 @@ new Waypoint({
       redt9Marker.openTooltip();
       // redt9Marker.addTo(mymap);
       redt11Marker.remove();
-      // line9_11.remove();
-      line9_11.setStyle({opacity: 0});
       $('.imagebox').fadeIn(300); 
     }
   },
@@ -623,8 +590,6 @@ new Waypoint({
       redt11Marker.setIcon(dimIcon);
       redt11Marker.closeTooltip();
       // redt11Marker.remove();
-      // line11_12.addTo(mymap);
-      line11_12.setStyle({opacity: 1});
       $('.imagebox').fadeOut(300); 
     } else {
       mymap.flyTo(t11coor, incidentZoom, {
@@ -634,8 +599,6 @@ new Waypoint({
       redt11Marker.openTooltip();
       // redt11Marker.addTo(mymap);
       redt12Marker.remove();
-      // line11_12.remove();
-      line11_12.setStyle({opacity: 0});
       $('.imagebox').fadeIn(300); 
     }
   },
