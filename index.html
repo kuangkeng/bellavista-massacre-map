@@ -98,15 +98,24 @@ body {
     border: none !important;
 }
 .leaflet-tooltip{
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  line-height: 13px;
+  line-height: 14px;
   text-align: center;
 	color: #ffffff;
-  text-shadow: 1px 1px 1px rgba(255,255,255,0.2);
+  text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
   background-color: rgba(0,0,0,0) !important;
   border:none !important;
   box-shadow: none !important;
+}
+.locationLabel {
+  font-size: 16px;
+  text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+}
+.countryLabel {
+  font-size: 16px;
+  font-weight: 400;
+  text-shadow: none;
 }
 .leaflet-tooltip-pane {
   z-index: 666;
@@ -138,6 +147,8 @@ body {
 .scroll-text .title {
   color: #fff;
   text-align: center;
+  text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
+  font-weight: 900;
 }
 #t16{
   margin-bottom: 900px !important;
@@ -188,9 +199,10 @@ ul {
     <div id="map-texts">
       <div class="container">
         <ul>
-          <li id="tfirst" class="scroll-text"></li>
-          <li id="t1" class="scroll-text">
+          <li id="tfirst" class="scroll-text">
             <p><h1 class="title">La masacre de Bellavista</h1></p>
+          </li>
+          <li id="t1" class="scroll-text">
             <p>En esta navidad se cumple un año desde que el Frente Carolina Ramírez irrumpió en Bellavista, una comunidad indígena de agricultores, pescadores y raspachines. Como muchas otras masacres, esta fue solo un registro en una larga lista de hechos violentos. Pero hasta ahora el ataque a Bellavista no había sido documentado. Esta zona, de difícil acceso en medio de la selva, está bajo el control de los Comandos de Frontera, enemigo y competidor del Frente Carolina Ramírez en el narcotráfico. En un intento por avanzar más al sur, hacia las abundantes regiones productoras de coca en Perú, se desencadenó la masacre.</p>
             <p>Así fueron los hechos ocurridos que reconstruimos aquí:</p>
           </li>
@@ -265,7 +277,7 @@ const incidentZoom = 18,
 if(window.innerWidth>500){
   defaultZoom = 10;
 } else if(window.innerWidth<500){
-  defaultZoom = 10;
+  defaultZoom = 9;
 }
 L.mapbox.accessToken = 'pk.eyJ1Ijoia3VhbmdrZW5nIiwiYSI6ImNsNXVibXhrNzBlNzUzamxhaHlrbHJsemcifQ.pi3jb5qDip_6YHTMDxDO5Q';
 
@@ -328,6 +340,10 @@ const
   line8_9 = L.polyline(point8_9, {color: '#CC0000', weight: 1, opacity:0}).addTo(mymap),
   line9_11 = L.polyline(point9_11, {color: '#CC0000', weight: 1, opacity:0}).addTo(mymap),
   line11_12 = L.polyline(point11_12, {color: '#CC0000', weight: 1, opacity:0}).addTo(mymap),
+  bellavistacoor = [-0.379538,-74.553066],
+  riocoor = [-0.194625,-74.787533],
+  perucoor = [-0.500366, -74.908641],
+  colombiacoor = [-0.308407,-74.133407],
   redt2Marker = L.marker(t2coor, {
     icon: redIcon,
   }).bindTooltip('', {
@@ -369,10 +385,40 @@ const
   }).bindTooltip('<b>Ejecución de<br>cinco hombres</b>', {
     permanent: true,
     direction: 'bottom'
-  }).openTooltip();
+  }).openTooltip(),
+  bellavistalabel = L.tooltip({
+    className: 'locationLabel'})
+    .setLatLng(bellavistacoor)
+    .setContent('Bellavista')
+    .addTo(mymap),
+  riolabel = L.tooltip({
+    className: 'locationLabel'})
+    .setLatLng(riocoor)
+    .setContent('Río Putumayo')
+    .addTo(mymap),
+  perulabel = L.tooltip({
+    className: 'countryLabel'})
+    .setLatLng(perucoor)
+    .setContent('PERU')
+    .addTo(mymap),
+  colombialabel = L.tooltip({
+    className: 'countryLabel'})
+    .setLatLng(colombiacoor)
+    .setContent('COLOMBIA')
+    .addTo(mymap);
 
 //waypoint transition
 const offsetVal = '80%';
+
+new Waypoint({
+  element: document.getElementById('t1'),
+  handler: direction => {
+    if (direction === 'down') {
+      $('.scroll-logo').hide();
+    } else {}
+  },
+  offset: offsetVal,
+});
 
 new Waypoint({
   element: document.getElementById('t2'),
